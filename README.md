@@ -1,8 +1,8 @@
 # Create a Virtual Machine from a User Image
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpgazure%2Fazure%2Fmaster%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpgazure%2Fazure%2Ffeature%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
-</a><a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/pgazure/azure/master/azuredeploy.json" target="_blank">
+</a><a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/pgazure/azure/feature/azuredeploy.json" target="_blank">
   <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
