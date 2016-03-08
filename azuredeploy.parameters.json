@@ -24,7 +24,7 @@
       "value": "windows"
     },
     "vmSize": {
-      "value": "Standard_D1"
+      "value": "Standard_D2"
     }
   }
 }
