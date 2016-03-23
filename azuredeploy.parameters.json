@@ -3,28 +3,28 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "username"
+      "value": "iadmin"
     },
     "adminPassword": {
-      "value": "password!"
+      "value": "windows2K12R2"
     },
     "userImageStorageAccountName": {
-      "value": "myStorageAccount"
+      "value": "exgl1""
     },
     "userImageStorageContainerName": {
-      "value": "myContainerName"
+      "value": "dev-vs605-0"
     },
     "userImageVhdName": {
-      "value": "sample.vhd"
+      "value": "dev-vs605-0.vhd"
     },
     "dnsNameForPublicIP": {
-      "value": "uniqueDNS"
+      "value": "dev-vs605-0"
     },
     "osType": {
       "value": "windows"
     },
     "vmSize": {
-      "value": "Standard_D2"
+      "value": "Standard_D2_V2"
     }
   }
 }

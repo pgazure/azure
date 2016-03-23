@@ -51,7 +51,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D1",
+      "defaultValue": "Standard_D2_V2"
       "metadata": {
         "description": "This is the size of your VM"
       }
@@ -60,18 +60,18 @@
   "variables": {
     "api-version": "2015-06-15",
     "location": "[resourceGroup().location]",
-    "publicIPAddressName": "exgl-db-pip1",
+    "publicIPAddressName": "dev-vs605-01-pip",
     "publicIPAddressType": "Static",
-    "vmName": "exgl-db-1",
-    "virtualNetworkName": "exgl-db-vnet1",
-    "nicName": "exgl-db-1-nic",
+    "vmName": "dev-vs605-01",
+    "virtualNetworkName": "dev-vs605-01-vnet",
+    "nicName": "dev-vs605-01-nic",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
     "subnet1Prefix": "10.0.0.0/24",
     "privateIPAllocationMethod": "Static",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "networkSecurityGroupName": "exgl-db-nsg1",
+    "networkSecurityGroupName": "dev-vs605-01-nsg1",
     "userImageName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdName'))]",
     "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmName'),'-osDisk.vhd')]",
     "project": "POC"
