@@ -4,24 +4,28 @@
   "parameters": {
     "userImageStorageAccountName": {
       "type": "string",
+	  "defaultValue": "exgl1",
       "metadata": {
         "description": "This is the name of the your storage account"
       }
     },
     "userImageStorageContainerName": {
       "type": "string",
+	  "defaultValue": "dev-vs605",
       "metadata": {
         "description": "This is the name of the container in your storage account"
       }
     },
     "userImageVhdName": {
       "type": "string",
+	  "defaultValue": "dev-vs605.vhd",
       "metadata": {
         "description": "This is the name of the your customized VHD"
       }
     },
     "dnsNameForPublicIP": {
       "type": "string",
+	  "defaultValue": "dev-vs605-",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
