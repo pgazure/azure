@@ -51,7 +51,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2_V2"
+      "defaultValue": "Standard_D2_V2",
       "metadata": {
         "description": "This is the size of your VM"
       }
@@ -74,7 +74,7 @@
     "networkSecurityGroupName": "dev-vs605-01-nsg1",
     "userImageName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdName'))]",
     "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmName'),'-osDisk.vhd')]",
-    "project": "POC"
+    "project": "EXGL"
   },
   "resources": [
     {
