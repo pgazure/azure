@@ -1,7 +1,7 @@
 {
-  "itemDisplayName": "Create a VM from User Image",
-  "description": "This template allows you to create a Virtual Machine from a custom user image. This template also deploys a Virtual Network, a Network Security Group attached to the Subnet, a Public IP address and a Network Interface. Three rules are created for the NSG to allow RDP, HTTP, and HTTPS access.",
-  "summary": "Create a Virtual Machine from a User Image",
+  "itemDisplayName": "Create 2 VMs from User Image",
+  "description": "This template allows you to create 2 Virtual Machine from a custom user image. This template also deploys a Virtual Network, a Network Security Group attached to the Subnet, a Public IP address and a Network Interface. Three rules are created for the NSG to allow RDP, HTTP, and HTTPS access.",
+  "summary": "Create 2 Virtual Machines from a User Image",
   "githubUsername": "pgazure",
-  "dateUpdated": "2016-03-07"
+  "dateUpdated": "2016-03-31"
 }
