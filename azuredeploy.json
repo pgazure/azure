@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemVm2/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "userImageStorageAccountName": {
@@ -14,27 +14,27 @@
         "description": "This is the name of the container in your storage account"
       }
     },
-    "userImageVhdNameDb": {
+    "userImageVhdNameVm1": {
       "type": "string",
       "metadata": {
-        "description": "This is the name of the your customized VHD for DB"
+        "description": "This is the name of the your customized VHD for Vm1"
       }
     },
-	"userImageVhdNameAs": {
+	"userImageVhdNameVm2": {
       "type": "string",
       "metadata": {
-        "description": "This is the name of the your customized VHD for AS"
+        "description": "This is the name of the your customized VHD for Vm2"
       }
     },
-	"dnsNameForPublicIPDb": {
+	"dnsNameForPublicIPVm1": {
       "type": "string",
       "metadata": {
-        "description": "Unique DNS Name for the Public IP used to access the DB Virtual Machine."
+        "description": "Unique DNS Name for the Public IP used to access the Vm1 Virtual Machine."
       }
-	"dnsNameForPublicIPAs": {
+	"dnsNameForPublicIPVm2": {
       "type": "string",
       "metadata": {
-        "description": "Unique DNS Name for the Public IP used to access the AS Virtual Machine."
+        "description": "Unique DNS Name for the Public IP used to access the Vm2 Virtual Machine."
       }  
     },
     "adminUserName": {
@@ -43,10 +43,10 @@
         "description": "UserName for the Virtual Machine"
       }
     },
-    "adminPassword": {
+    "adminPVm2sword": {
       "type": "securestring",
       "metadata": {
-        "description": "Password for the Virtual Machine"
+        "description": "PVm2sword for the Virtual Machine"
       }
     },
     "osType": {
@@ -71,32 +71,32 @@
   "variables": {
     "api-version": "2015-06-15",
     "location": "[resourceGroup().location]",
-    "publicIPAddressNameDb": "exgl-db-pip-1",
-	"publicIPAddressNameAs": "exgl-as-pip-1",
+    "publicIPAddressNameVm1": "dev-vs15-pip-1",
+	"publicIPAddressNameVm2": "dev-vs15-pip-2",
     "publicIPAddressType": "Static",
-    "vmNameDb": "exgl-db-1",
-	"vmNameAs": "exgl-as-1",
-    "virtualNetworkName": "exgl-vnet-1",
-    "nicNameDb": "exgl-db-1-nic",
-	"nicNameAs": "exgl-as-1-nic",
+    "vmNameVm1": "dev-vs15-1",
+	"vmNameVm2": "dev-vs15-2",
+    "virtualNetworkName": "dev-vs15-vnet",
+    "nicNameVm1": "dev-vs15-nic-1",
+	"nicNameVm2": "dev-vs15-nic-2",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
     "subnet1Prefix": "10.0.0.0/24",
     "privateIPAllocationMethod": "Static",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "networkSecurityGroupName": "exgl-nsg-1",
-    "userImageNameDb": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdNameDb'))]",
-	"userImageNameAs": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdNameAs'))]",
-    "osDiskVhdNameDb": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmNameDb'),'-osDisk.vhd')]",
-	"osDiskVhdNameAs": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmNameAs'),'-osDisk.vhd')]",
+    "networkSecurityGroupName": "dev-vs15-nsg",
+    "userImageNameVm1": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdNameVm1'))]",
+	"userImageNameVm2": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdNameVm2'))]",
+    "osDiskVhdNameVm1": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmNameVm1'),'-osDisk.vhd')]",
+	"osDiskVhdNameVm2": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmNameVm2'),'-osDisk.vhd')]",
     "project": "EXGL"
   },
   "resources": [
     {
       "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPAddressNameDb')]",
+      "name": "[variables('publicIPAddressNameVm1')]",
       "location": "[variables('location')]",
       "tags": {
         "project": "[variables('project')]"
@@ -111,7 +111,7 @@
 	{
       "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPAddressNameAs')]",
+      "name": "[variables('publicIPAddressNameVm2')]",
       "location": "[variables('location')]",
       "tags": {
         "project": "[variables('project')]"
@@ -241,44 +241,44 @@
     {
       "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[variables('vmNameDb')]",
+      "name": "[variables('vmNameVm1')]",
       "location": "[variables('location')]",
       "tags": {
         "project": "[variables('project')]"
       },
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicNameDb'))]"
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicNameVm1'))]"
       ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmNameDb')]",
+          "computerName": "[variables('vmNameVm1')]",
           "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]",
+          "adminPVm2sword": "[parameters('adminPVm2sword')]",
           "windowsConfiguration": {
              "provisionVMAgent": true
           }
         },
         "storageProfile": {
           "osDisk": {
-            "name": "[concat(variables('vmNameDb'),'-osDisk')]",
+            "name": "[concat(variables('vmNameVm1'),'-osDisk')]",
             "osType": "[parameters('osType')]",
             "caching": "ReadWrite",
             "createOption": "FromImage",
             "image": {
-              "uri": "[variables('userImageNameDb')]"
+              "uri": "[variables('userImageNameVm1')]"
             },
             "vhd": {
-              "uri": "[variables('osDiskVhdNameDb')]"
+              "uri": "[variables('osDiskVhdNameVm1')]"
             }
           }
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicNameDb'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicNameVm1'))]"
             }
           ]
         },
@@ -293,44 +293,44 @@
 	{
       "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[variables('vmNameAs')]",
+      "name": "[variables('vmNameVm2')]",
       "location": "[variables('location')]",
       "tags": {
         "project": "[variables('project')]"
       },
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicNameAs'))]"
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicNameVm2'))]"
       ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmNameAs')]",
+          "computerName": "[variables('vmNameVm2')]",
           "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]",
+          "adminPVm2sword": "[parameters('adminPVm2sword')]",
           "windowsConfiguration": {
              "provisionVMAgent": true
           }
         },
         "storageProfile": {
           "osDisk": {
-            "name": "[concat(variables('vmNameAs'),'-osDisk')]",
+            "name": "[concat(variables('vmNameVm2'),'-osDisk')]",
             "osType": "[parameters('osType')]",
             "caching": "ReadWrite",
             "createOption": "FromImage",
             "image": {
-              "uri": "[variables('userImageNameAs')]"
+              "uri": "[variables('userImageNameVm2')]"
             },
             "vhd": {
-              "uri": "[variables('osDiskVhdNameAs')]"
+              "uri": "[variables('osDiskVhdNameVm2')]"
             }
           }
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicNameAs'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicNameVm2'))]"
             }
           ]
         },
