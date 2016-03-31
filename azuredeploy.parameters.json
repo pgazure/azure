@@ -14,11 +14,8 @@
     "userImageStorageContainerName": {
       "value": "myContainerName"
     },
-    "userImageVhdNameDb": {
-      "value": "exgl-db.vhd"
-    },
-	"userImageVhdNameAs": {
-      "value": "exgl-as.vhd"
+    "userImageVhdName": {
+      "value": "dev-vs15.vhd"
     },
     "dnsNameForPublicIPDb": {
       "value": "uniqueDNS"
