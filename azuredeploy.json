@@ -60,21 +60,21 @@
   "variables": {
     "api-version": "2015-06-15",
     "location": "[resourceGroup().location]",
-    "publicIPAddressName": "dev-vs605-01-pip",
+    "publicIPAddressName": "dev-vs15-01-pip",
     "publicIPAddressType": "Static",
-    "vmName": "dev-vs605-vm1",
-    "virtualNetworkName": "dev-vs605-01-vnet",
-    "nicName": "dev-vs605-01-nic",
+    "vmName": "dev-vs15-vm1",
+    "virtualNetworkName": "dev-vs15-01-vnet",
+    "nicName": "dev-vs15-01-nic",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
     "subnet1Prefix": "10.0.0.0/24",
     "privateIPAllocationMethod": "Static",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "networkSecurityGroupName": "dev-vs605-01-nsg",
+    "networkSecurityGroupName": "dev-vs15-01-nsg",
     "userImageName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdName'))]",
     "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmName'),'-osDisk.vhd')]",
-    "project": "POC"
+    "project": "EXGL"
   },
   "resources": [
     {
