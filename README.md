@@ -1,4 +1,4 @@
-# Create a Virtual Machine from a User Image
+# Create 2 Virtual Machines from a User Image
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpgazure%2Fazure%2Fdev-vs605%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
