@@ -12,13 +12,13 @@
       "value": "exgl1"
     },
     "userImageStorageContainerName": {
-      "value": "dev-vs605-0"
+      "value": "exgl"
     },
     "userImageVhdName": {
-      "value": "dev-vs605-0.vhd"
+      "value": "exgl.vhd"
     },
     "dnsNameForPublicIP": {
-      "value": "dev-vs605-0"
+      "value": "exgl01"
     },
     "osType": {
       "value": "windows"
