@@ -18,7 +18,7 @@
       "value": "exgl.vhd"
     },
     "dnsNameForPublicIP": {
-      "value": "exgl01"
+      "value": "exgl-01"
     },
     "osType": {
       "value": "windows"
