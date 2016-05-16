@@ -11,14 +11,14 @@
     },
     "userImageStorageContainerName": {
       "type": "string",
-	  "defaultValue": "dev-vs605",
+	  "defaultValue": "exgl",
       "metadata": {
         "description": "This is the name of the container in your storage account"
       }
     },
     "userImageVhdName": {
       "type": "string",
-	  "defaultValue": "dev-vs605.vhd",
+	  "defaultValue": "exgl.vhd",
       "metadata": {
         "description": "This is the name of the your customized VHD"
       }
@@ -55,7 +55,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2_V2",
+      "defaultValue": "Standard_D3_V2",
       "metadata": {
         "description": "This is the size of your VM"
       }
@@ -64,10 +64,10 @@
   "variables": {
     "api-version": "2015-06-15",
     "location": "[resourceGroup().location]",
-    "publicIPAddressName": "dev-vs605-1-pip",
+    "publicIPAddressName": "exgl01-pip",
     "publicIPAddressType": "Static",
     "vmName": "dev-vs605-1",
-    "virtualNetworkName": "dev-vs605-1-vnet",
+    "virtualNetworkName": "exgl01-vnet",
     "nicName": "dev-vs605-1-nic",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
@@ -75,7 +75,7 @@
     "privateIPAllocationMethod": "Static",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "networkSecurityGroupName": "dev-vs605-1-nsg",
+    "networkSecurityGroupName": "exgl01-nsg",
     "userImageName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdName'))]",
     "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmName'),'-osDisk.vhd')]",
     "project": "POC"
