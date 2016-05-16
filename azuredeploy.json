@@ -25,7 +25,7 @@
     },
     "dnsNameForPublicIP": {
       "type": "string",
-	  "defaultValue": "exgl01",
+	  "defaultValue": "exgl-01",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
@@ -64,18 +64,18 @@
   "variables": {
     "api-version": "2015-06-15",
     "location": "[resourceGroup().location]",
-    "publicIPAddressName": "exgl01-pip",
+    "publicIPAddressName": "exgl-01-pip",
     "publicIPAddressType": "Static",
-    "vmName": "exgl01",
-    "virtualNetworkName": "exgl01-vnet",
-    "nicName": "exgl01-nic",
+    "vmName": "exgl-01",
+    "virtualNetworkName": "exgl-01-vnet",
+    "nicName": "exgl-01-nic",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
     "subnet1Prefix": "10.0.0.0/24",
     "privateIPAllocationMethod": "Static",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
-    "networkSecurityGroupName": "exgl01-nsg",
+    "networkSecurityGroupName": "exgl-01-nsg",
     "userImageName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/',parameters('userImageStorageContainerName'),'/',parameters('userImageVhdName'))]",
     "osDiskVhdName": "[concat('http://',parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',variables('vmName'),'-osDisk.vhd')]",
     "project": "POC"
