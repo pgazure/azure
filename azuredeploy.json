@@ -25,7 +25,7 @@
     },
     "dnsNameForPublicIP": {
       "type": "string",
-	  "defaultValue": "dev-vs605-",
+	  "defaultValue": "exgl01",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
@@ -66,9 +66,9 @@
     "location": "[resourceGroup().location]",
     "publicIPAddressName": "exgl01-pip",
     "publicIPAddressType": "Static",
-    "vmName": "dev-vs605-1",
+    "vmName": "exgl01",
     "virtualNetworkName": "exgl01-vnet",
-    "nicName": "dev-vs605-1-nic",
+    "nicName": "exgl01-nic",
     "addressPrefix": "10.0.0.0/16",
     "subnet1Name": "Subnet1",
     "subnet1Prefix": "10.0.0.0/24",
